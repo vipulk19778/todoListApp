@@ -33,8 +33,8 @@ export const useStyles = makeStyles({
     color: "#8566aa",
     cursor: "pointer",
     "&:hover": { color: "crimson" },
-    "@media (max-width:768px)": {
-      margin: "0 15px 0 15px",
+    "@media (max-width:468px)": {
+      margin: "0 5px 0 20px",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -50,8 +50,8 @@ export const useStyles = makeStyles({
     color: "#8566aa",
     cursor: "pointer",
     "&:hover": { color: "green" },
-    "@media (max-width:768px)": {
-      margin: "0 15px 0 15px",
+    "@media (max-width:468px)": {
+      margin: "0 10px 0 5px",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",

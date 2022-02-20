@@ -3,17 +3,22 @@ import { useStyles } from "./task-list-styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-export const TaskListRenderer = (props: any) => {
+export interface ITaskListRendererProps {
+  listItem: string[];
+  handleDeleteButton: (id: number) => void;
+  handleEditButton: (id: number) => void;
+}
+
+export const TaskListRenderer = (props: ITaskListRendererProps) => {
   const { listItem } = props;
   const classes = useStyles();
   return (
     <div className={classes.listItems}>
-      {listItem.map((item: any, index: any) => (
+      {listItem.map((item: string, index: number) => (
         <div className={classes.todoStyle} key={index}>
           <DeleteIcon
             className={classes.delete}
             aria-hidden="true"
-            id={index}
             onClick={() => {
               props.handleDeleteButton(index);
             }}

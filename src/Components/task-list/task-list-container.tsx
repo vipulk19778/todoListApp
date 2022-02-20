@@ -9,25 +9,25 @@ export const TaskListComponent = () => {
     focusOnClick,
     setInput,
     setToggleSubmit,
-    setInputEditButtonData,
+    setInputEditButtonId,
   } = React.useContext(AuthContext);
 
-  const handleDeleteButton = (id: any) => {
+  const handleDeleteButton = (id: number) => {
     setListItem(
-      listItem.filter((prevItem: any, index: any) => {
+      listItem.filter((prevItem: string, index: number) => {
         return index !== id;
       })
     );
     focusOnClick();
   };
-  const handleEditButton = (id: any) => {
-    let editItem = listItem.find((prevItem: any, index: any) => {
+  const handleEditButton = (id: number) => {
+    let editItem: any = listItem.find((prevItem: string, index: number) => {
       return index === id;
     });
     setInput(editItem);
     setToggleSubmit(false);
     focusOnClick();
-    setInputEditButtonData(id);
+    setInputEditButtonId(id);
   };
 
   return (

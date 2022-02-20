@@ -1,8 +1,32 @@
 import React from "react";
 
-export const AuthContext = React.createContext<any>("");
+export interface IAuthContext {
+  input: string;
+  setInput: (input: string) => void;
+  listItem: string[];
+  setListItem: (listItem: string[]) => void;
+  focusOnClick: () => void;
+  inputRef: any;
+  toggleSubmit: boolean;
+  setToggleSubmit: (toggleSubmit: boolean) => void;
+  inputEditButtonId: number | null;
+  setInputEditButtonId: (inputEditButtonId: number | null) => void;
+}
 
-const getLocalStorageData = () => {
+export const AuthContext = React.createContext<IAuthContext>({
+  input: "",
+  setInput: () => {},
+  listItem: [],
+  setListItem: () => {},
+  focusOnClick: () => {},
+  inputRef: null,
+  toggleSubmit: true,
+  setToggleSubmit: () => {},
+  inputEditButtonId: null,
+  setInputEditButtonId: () => {},
+});
+
+const getLocalStorageData: () => [] = () => {
   const localStorageListItems = localStorage.getItem("localStorageListItems");
   if (localStorageListItems) {
     return JSON.parse(localStorageListItems);
@@ -11,13 +35,17 @@ const getLocalStorageData = () => {
   }
 };
 
-export const AuthProvider = ({ children }: any) => {
-  const [input, setInput] = React.useState("");
-  const [listItem, setListItem] = React.useState(getLocalStorageData());
+export const AuthProvider: React.FC = ({ children }) => {
+  const [input, setInput] = React.useState<string>("");
+  const [listItem, setListItem] = React.useState<string[]>(
+    getLocalStorageData()
+  );
 
-  const [toggleSubmit, setToggleSubmit] = React.useState(true);
+  const [toggleSubmit, setToggleSubmit] = React.useState<boolean>(true);
 
-  const [inputEditButtonData, setInputEditButtonData] = React.useState(null);
+  const [inputEditButtonId, setInputEditButtonId] = React.useState<
+    null | number
+  >(null);
 
   const inputRef = React.useRef<any>();
 
@@ -34,8 +62,8 @@ export const AuthProvider = ({ children }: any) => {
     setInput,
     toggleSubmit,
     setToggleSubmit,
-    inputEditButtonData,
-    setInputEditButtonData,
+    inputEditButtonId,
+    setInputEditButtonId,
   };
 
   React.useEffect(() => {

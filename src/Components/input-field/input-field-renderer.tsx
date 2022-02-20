@@ -1,7 +1,17 @@
 import { useStyles } from "./input-field-styles";
 import EditIcon from "@mui/icons-material/Edit";
 import { ToastContainer } from "react-toastify";
-export const InputFieldRenderer = (props: any) => {
+
+export interface IInputFieldRendererProps {
+  input: string;
+  inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  inputRef: any;
+  toggleSubmit: boolean;
+  handleAddButton: () => void;
+}
+
+export const InputFieldRenderer = (props: IInputFieldRendererProps) => {
   const classes = useStyles();
   return (
     <div className={classes.inputComponent}>
