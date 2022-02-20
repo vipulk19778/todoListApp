@@ -1,7 +1,7 @@
 import React from "react";
 import { InputField } from "./Components/input-field";
 import { TaskList } from "./Components/task-list";
-import { AuthProvider } from "./Context/PassContext";
+import { AuthProvider } from "./Context/AuthContext";
 import { useStyles } from "./AppStyles";
 
 function App() {

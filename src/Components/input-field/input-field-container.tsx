@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthContext } from "../../Context/PassContext";
+import { AuthContext } from "../../Context/AuthContext";
 import { InputFieldRenderer } from ".";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,7 +28,7 @@ export const InputFieldComponent = () => {
       focusOnClick();
     } else if (input && !toggleSubmit) {
       setListItem(
-        listItem.map((prevData: any, index: any) => {
+        listItem.map((prevData: string, index: number) => {
           if (index === inputEditButtonData) {
             return input;
           }
