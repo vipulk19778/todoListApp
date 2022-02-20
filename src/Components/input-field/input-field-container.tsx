@@ -14,12 +14,12 @@ export const InputFieldComponent = () => {
     inputRef,
     toggleSubmit,
     setToggleSubmit,
-    inputEditButtonData,
-    setInputEditButtonData,
+    inputEditButtonId,
+    setInputEditButtonId,
   } = React.useContext(AuthContext);
 
-  const inputChange = (e: any) => {
-    setInput(e.target.value);
+  const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(event.target.value);
   };
 
   const handleAddButton = () => {
@@ -29,7 +29,7 @@ export const InputFieldComponent = () => {
     } else if (input && !toggleSubmit) {
       setListItem(
         listItem.map((prevData: string, index: number) => {
-          if (index === inputEditButtonData) {
+          if (index === inputEditButtonId) {
             return input;
           }
           return prevData;
@@ -38,7 +38,7 @@ export const InputFieldComponent = () => {
       setToggleSubmit(true);
       setInput("");
       focusOnClick();
-      setInputEditButtonData(null);
+      setInputEditButtonId(null);
     } else {
       setListItem([...listItem, input]);
       focusOnClick();
@@ -46,8 +46,8 @@ export const InputFieldComponent = () => {
     }
   };
 
-  const handleKeyDown = (e: any) => {
-    if (e.keyCode === 13) handleAddButton();
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") handleAddButton();
   };
 
   return (
