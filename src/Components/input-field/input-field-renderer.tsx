@@ -6,7 +6,7 @@ export interface IInputFieldRendererProps {
   input: string;
   inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  inputRef: any;
+  inputRef: HTMLInputElement | undefined;
   toggleSubmit: boolean;
   handleAddButton: () => void;
 }
@@ -25,7 +25,7 @@ export const InputFieldRenderer = (props: IInputFieldRendererProps) => {
         className={classes.input}
         onChange={props.inputChange}
         onKeyDown={props.handleKeyDown}
-        ref={props.inputRef}
+        ref={props.inputRef as any}
         autoFocus
       />
       {props.toggleSubmit ? (

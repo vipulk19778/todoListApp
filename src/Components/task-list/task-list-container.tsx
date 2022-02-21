@@ -21,10 +21,12 @@ export const TaskListComponent = () => {
     focusOnClick();
   };
   const handleEditButton = (id: number) => {
-    let editItem: any = listItem.find((prevItem: string, index: number) => {
-      return index === id;
-    });
-    setInput(editItem);
+    let editItem: string | undefined = listItem.find(
+      (prevItem: string, index: number) => {
+        return index === id;
+      }
+    );
+    setInput(editItem || "");
     setToggleSubmit(false);
     focusOnClick();
     setInputEditButtonId(id);

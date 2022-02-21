@@ -47,10 +47,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     null | number
   >(null);
 
-  const inputRef = React.useRef<any>();
+  const inputRef = React.useRef<HTMLInputElement>();
 
   const focusOnClick = () => {
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   const store = {
